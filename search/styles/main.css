@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #555;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+#app {
+  padding: 1em;
+    display: flex;
+    flex-flow: column;
+    max-height: 100vh;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.item {
+  border-bottom: 1px solid #ccc;
+}
