@@ -30,6 +30,7 @@ planet = {
   heatMapTimer: function(arr) {
 
     let num = arr.length;
+    console.log(num)
     let loops = 0;
     let _this = this;
 
@@ -41,10 +42,12 @@ planet = {
       _this.updateHeatMap(arr[loops].loc)
 
       loops++;
+      console.log(loops)
 
-      if(loops > num) {
+      if(loops >= 78) {
         clearTimeout(t);
         console.log('end')
+        $('#title').html('<h1>The End</h1><img src="https://media2.giphy.com/media/Kz420G0aGw5mU/giphy.gif?cid=ecf05e472r161n9u24q25sw6p70jn3o2nzlurwlbrsourff9&rid=giphy.gif&ct=g"/>')
       }
     },2000);
 
