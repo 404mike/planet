@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Vis Network </title>
+
+    <style type="text/css">
+      #mynetwork {
+        width: 900px;
+        height: 900px;
+        border: 1px solid lightgray;
+      }
+    </style>
+
+    <script type="text/javascript" src="assets/data.js"></script>
+    <script type="text/javascript" src="assets/vis-network.min.js"></script>
+
+    <script type="text/javascript">
+      function draw() {
+
+        // create a network
+        var container = document.getElementById("mynetwork");
+        var data = {
+          nodes: nodes,
+          edges: edges,
+        };
+        var options = {
+          nodes: {
+            shape: "dot",
+            size: 16,
+          },
+          physics: {
+            forceAtlas2Based: {
+              gravitationalConstant: -26,
+              centralGravity: 0.005,
+              springLength: 230,
+              springConstant: 0.18,
+            },
+            maxVelocity: 146,
+            solver: "forceAtlas2Based",
+            timestep: 0.35,
+            stabilization: { iterations: 150 },
+          },
+        };
+        var network = new vis.Network(container, data, options);
+      }
+    </script>
+  </head>
+
+  <body onload="draw()">
+    <p>Please wait for graph to load</p>
+    <div id="mynetwork"></div>
+  </body>
+</html>
