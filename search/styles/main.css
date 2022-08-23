@@ -22,3 +22,13 @@ body {
 .item {
   border-bottom: 1px solid #ccc;
 }
+
+span {
+  border-bottom: 1px solid #7c7a7a;
+  cursor: pointer;
+  padding: 2px;
+}
+
+span:hover {
+  background-color: #ededed;
+}

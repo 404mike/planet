@@ -30,6 +30,8 @@ let planet = {
 
   renderOutput: function(res){
 
+    let _this = this;
+
     $('#results').html('');
 
     let count = res.length;
@@ -42,20 +44,40 @@ let planet = {
     $.each(res, function(k,v){
       // console.log(v)
 
-      
-
       let template = '<div class="item">';
         template += '<h2>' + v.title + '</h2>';
-        template += '<p>Author: ' + v.author + '</p>';
+        template += '<p>Author: ' + _this.formatData(v.author) + '</p>';
         template += '<p>Date: ' + v.date + ' - Issue: ' + v.issue + '</p>';
-        template += '<p>Location: ' + v.location + '</p>';
-        template += '<p>Terms: ' + v.terms + '</p>';
+        template += '<p>Location: ' + _this.formatData(v.location) + '</p>';
+        template += '<p>Terms: ' + _this.formatData(v.keyword) + '</p>';
       
       template += '</div>';
 
       $('#results').append(template);
 
     })
+  },
+
+  formatData: function(data) {
+
+    if(data == '' || data == null) {
+      return '';
+    }
+   
+    let parts = data.split(';');
+
+    let str = '';
+    parts.forEach(el => {
+      str += '<span data-val="'+el+'">' + el + '</span> ';
+    })
+
+    return str;
+  },
+
+  updateSearch: function(val) {
+    $('input#query').val(val);
+    $('#submit').trigger('click');
+    $("html, body").animate({ scrollTop: 0 }, "slow");
   }
 }
 
@@ -67,6 +89,11 @@ $(document).ready(function(){
     let q = $('#query').val();
     planet.search(q);
     return false;
+  });
+
+  $(document).on('click', 'span', function(){
+    let val = $(this).data('val');
+    planet.updateSearch(val)
   });
 
 });
