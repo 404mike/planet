@@ -37,29 +37,37 @@ planet = {
     });
   },
 
+  setGradient: function() {
+    const gradient = [
+      "rgba(0, 255, 255, 0)",
+      "rgba(0, 255, 255, 1)",
+      "rgba(0, 191, 255, 1)",
+      "rgba(0, 127, 255, 1)",
+      "rgba(0, 63, 255, 1)",
+      "rgba(0, 0, 255, 1)",
+      "rgba(0, 0, 223, 1)",
+      "rgba(0, 0, 191, 1)",
+      "rgba(0, 0, 159, 1)",
+      "rgba(0, 0, 127, 1)",
+      "rgba(63, 0, 91, 1)",
+      "rgba(127, 0, 63, 1)",
+      "rgba(191, 0, 31, 1)",
+      "rgba(255, 0, 0, 1)",
+    ];
+  
+    heatmap.set("gradient", gradient);
+    console.log('eteS')
+  },
+
   updateHeatMap: function(heatmapData) { 
 
-    
-    // var heatmapData = [];
-
-    // $.each(loc, function(k, v){
-    //   let geo = v.geo.split(',');
-    //   let lat = parseFloat(geo[0]);
-    //   let lng = parseFloat(geo[1])
-    //   heatmapData.push(new google.maps.LatLng(lat, lng))
-    // });
-
-    // for (var k = 0; k < array.length; k++) {
-    //   array[k].setMap(null);
-    // }
-
     heatmap.setMap(null);
+  
     heatmap = new google.maps.visualization.HeatmapLayer({
       data: heatmapData
     });
 
-
-
+    this.setGradient();
     heatmap.setMap(map);
 
   },
