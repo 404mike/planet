@@ -69,6 +69,8 @@ class MakeTimedData {
       $date = $v['Date'];
       $loc = explode(';',$v['Subject location']);
 
+      // print_r($loc);
+
       if(empty($data)) continue;
       if(empty($loc)) continue;
 
@@ -78,6 +80,10 @@ class MakeTimedData {
           $dateFormatted = $this->formatDate($date);
 
           if(!empty($dateFormatted)) {
+
+            $latlng = $this->getLocation(trim($lv));
+            if(empty($latlng)) continue;
+
             $locations[$dateFormatted][] = [
               'place' => trim($lv),
               'geo' => $this->getLocation(trim($lv))
@@ -114,13 +120,13 @@ class MakeTimedData {
     $month = $arr[0];
 
     $newDate = $year . '-' . $month . '-01';
-    return date('Ymd',strtotime($newDate));
+    return date('Y',strtotime($newDate));
 
   }
 
   private function outputResults($locations)
   {
-    file_put_contents('planet_locations.json',json_encode($locations));
+    file_put_contents('planet_locations.json',json_encode($locations,JSON_PRETTY_PRINT));
   }
 
 }

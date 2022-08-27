@@ -49,10 +49,15 @@ class MergeGeo {
   private function mergeDocs($newLoc)
   {
     foreach($newLoc as $k => $v) {
+
+      if(empty($v['geo'])) continue;
+
       $place = $v['Place'];
       $latlng = $v['geo'];
       $this->existingGeo[$place] = $latlng;
     }
+
+    print_r($this->existingGeo);
 
     file_put_contents('location_data.json', json_encode($this->existingGeo,JSON_PRETTY_PRINT));
   }
