@@ -16,7 +16,7 @@ let planet = {
   initMiniSearch: function(data){
     miniSearch = new MiniSearch({
       fields: ['title', 'author','location','keyword','date'], // fields to index for full-text search
-      storeFields: ['title', 'author','location','keyword','date','issue'] // fields to return with search results
+      storeFields: ['title', 'author','location','keyword','date','issue'], // fields to return with search results
     })
 
     // Index all documents
@@ -24,7 +24,17 @@ let planet = {
   },
 
   search: function(query){
-    let results = miniSearch.search(query)
+
+    if ($('#logicalOperator').is(":checked")) {
+      logicalOperator = 'AND';
+    }else{
+      logicalOperator = 'OR';
+    }
+
+    let results = miniSearch.search(query, { 
+      combineWith: logicalOperator,
+      // filter: (results) => result.author === 'Wooster, Roger' 
+    })
     this.renderOutput(results)
   },
 

@@ -32,3 +32,12 @@ span {
 span:hover {
   background-color: #ededed;
 }
+
+form {
+  margin: 0 auto;
+  width: 300px;
+}
+
+button#submit {
+  margin-bottom: 15px;
+}
