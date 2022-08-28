@@ -37,12 +37,13 @@ div#content {
 #map{
   float: left;
   width: 80%;
+  height: 650px;
 }
 
 #info {
   float: right;
   width: 20%;
-  height: 512px;
+  height: 650px;
   overflow-y: scroll;
 }
 

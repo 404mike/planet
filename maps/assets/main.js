@@ -56,7 +56,6 @@ planet = {
     ];
   
     heatmap.set("gradient", gradient);
-    console.log('eteS')
   },
 
   updateHeatMap: function(heatmapData) { 
@@ -100,15 +99,15 @@ planet = {
   updateMapButtonEvent: function() {
     let _this = this
     $('button#update_map').click(function(){
-      let val = slider.noUiSlider.get();
+      let val = slider.noUiSlider.get(true);
       _this.parseDateRangeData(val)
     })
   },
 
   parseDateRangeData: function(range){
-    s = this.getKeyByValue(dates, range[0])
-    f = this.getKeyByValue(dates, range[1] + 1)
-    let new_range = arr.slice(s, f)
+    s = range[0]
+    f = range[1]
+    let new_range = arr.slice(s, f + 1)
     this.parseNewDateRangeData(new_range);
   },
 
