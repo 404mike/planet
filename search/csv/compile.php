@@ -14,7 +14,7 @@ class CompileCSV {
 
   private function getFiles()
   {
-    $files = glob('*.{csv}', GLOB_BRACE);
+    $files = glob('../../data/*.{csv}', GLOB_BRACE);
     foreach($files as $file) {
       $this->loadCsvFile($file);
     }

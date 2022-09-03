@@ -4,7 +4,7 @@ Download latest CSVs into ../data
 
 Create CSV from `location_issues.json` by running `php generate_empty_location_csv.php > empty.csv`
 
-Upload `empty.csv` to Google Drive and update the location data. Download file and save as `resolved_locations.json`.
+Upload `empty.csv` to Google Drive and update the location data. Download file and save as `resolved_locations.csv`.
 
 `merge.php` takes `resolved_locations.csv` and merges the changes into `location_data.json`.
 
